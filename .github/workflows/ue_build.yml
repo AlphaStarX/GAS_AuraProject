@@ -16,7 +16,7 @@ jobs:
 
     env:
       # Path to your installed Unreal Engine engine directory
-      ENGINE_PATH: 'D:\UE_5.6'
+      ENGINE_PATH: 'D:\Epic Games\UE_5.8'
 
     steps:
       - name: Checkout Project Source
