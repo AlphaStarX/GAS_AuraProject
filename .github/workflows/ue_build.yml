@@ -1,0 +1,30 @@
+name: Unreal Engine C++ Build Verification
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Aura C++ Project
+    # 'self-hosted' uses your local machine runner (recommended for UE5 to use local engine & cache)
+    # Change to 'windows-latest' if using cloud runners with pre-installed or downloaded engine.
+    runs-on: self-hosted
+
+    env:
+      # Path to your installed Unreal Engine engine directory
+      ENGINE_PATH: 'D:\UE_5.6'
+
+    steps:
+      - name: Checkout Project Source
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Build AuraEditor (Win64 Development)
+        shell: cmd
+        run: |
+          "%ENGINE_PATH%\Engine\Build\BatchFiles\Build.bat" AuraEditor Win64 Development "%github.workspace%\Aura.uproject" -waitmutex
