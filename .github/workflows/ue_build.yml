@@ -27,4 +27,4 @@ jobs:
       - name: Build AuraEditor (Win64 Development)
         shell: cmd
         run: |
-          "%ENGINE_PATH%\Engine\Build\BatchFiles\Build.bat" AuraEditor Win64 Development "%github.workspace%\Aura.uproject" -waitmutex
+          "%ENGINE_PATH%\Engine\Build\BatchFiles\Build.bat" AuraEditor Win64 Development "${{ github.workspace }}\Aura.uproject" -waitmutex
